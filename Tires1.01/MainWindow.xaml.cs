@@ -23,6 +23,7 @@ namespace Tires1._01
         public MainWindow()
         {
             InitializeComponent();
+            DataContext= new ApplicationViewModel();
         }
     }
 }
