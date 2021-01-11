@@ -34,6 +34,15 @@ namespace Tires1._01
                 OnPropertyChanged("Name");
             }
         }
+        public string Brand
+        {
+            get { return brand; }
+            set
+            {
+                brand = value;
+                OnPropertyChanged("Brand");
+            }
+        }
         public int Price
         {
             get { return price; }

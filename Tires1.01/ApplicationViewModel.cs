@@ -11,6 +11,18 @@ namespace Tires1._01
     {
         private ApplicationContext db;
         private IEnumerable<Tire> tires;
+        
+        private ListOfWidth list;
+
+        public ListOfWidth List
+        {
+            get { return list; }
+            set
+            {
+                list = value;
+                OnPropertyChanged("List");
+            }
+        }
         public IEnumerable<Tire> Tires
         {
             get { return tires; }
@@ -26,6 +38,9 @@ namespace Tires1._01
             db = new ApplicationContext();
             db.tires.Load();
             Tires = db.tires.Local.ToBindingList();
+            list = new ListOfWidth();
+            
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

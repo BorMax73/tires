@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="ApplicationViewModel.cs" />
+    <Compile Include="ListOfWidth.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="tire.cs" />
     <Page Include="MainWindow.xaml">

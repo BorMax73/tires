@@ -9,6 +9,7 @@
         Title="MainWindow" Height="450" Width="800"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}">
+        
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -42,17 +43,16 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="0.5*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" >
                 <ComboBox
                     materialDesign:HintAssist.Hint="Virtualisation"
-                    ItemsSource="{Binding LongListToTestComboVirtualization}"
-                    SelectedValue="{Binding SelectedValueOne}">
+                    ItemsSource="{Binding List.List}"
+                    SelectedValue="{Binding List.SelectElement}">
                     <ComboBox.SelectedItem>
                         <Binding
-                            Path="SelectedValueOne"
+                            Path="SelectElement"
                             Mode="TwoWay"
                             UpdateSourceTrigger="PropertyChanged">
-                            
                         </Binding>
                     </ComboBox.SelectedItem>
                     <ComboBox.ItemsPanel>
@@ -68,7 +68,7 @@
                 <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=Name}" />
+                        <TextBlock FontSize="18" Text="{Binding Path=Brand}" />
                         <TextBlock FontSize="18" Text="{Binding Path= Price }" />
                         </StackPanel>
                 </DataTemplate>
