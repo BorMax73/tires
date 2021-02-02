@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\maxbo\source\repos\Tires1.01\Tires1.01\App.xaml
-3-1116423267
+3-1683585254
 
-211879067389
+211876283902
 21-634955032
-FavoriteView.xaml;MainWindow.xaml;View\Resources\MainView.xaml;
+View\FavoriteView.xaml;MainWindow.xaml;View\MainView.xaml;
 
-True
+False
 
