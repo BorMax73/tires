@@ -8,6 +8,7 @@ namespace Tires1._01
         {
 
         }
-        public DbSet<Tire> tires { get; set; }
+        public DbSet<Tire> Tires { get; set; }
+        
     }
 }

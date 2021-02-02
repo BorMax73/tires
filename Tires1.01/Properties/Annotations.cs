@@ -71,7 +71,7 @@ namespace Tires1._01.Annotations
   /// or of the Lazy.Value property can never be null.
   /// </summary>
   /// <example><code>
-  /// public void Foo([ItemNotNull]List&lt;string&gt; books)
+  /// public void Foo([ItemNotNull]ListOfWidth&lt;string&gt; books)
   /// {
   ///   foreach (var book in books) {
   ///     if (book != null) // Warning: Expression is always true
@@ -90,7 +90,7 @@ namespace Tires1._01.Annotations
   /// or of the Lazy.Value property can be null.
   /// </summary>
   /// <example><code>
-  /// public void Foo([ItemCanBeNull]List&lt;string&gt; books)
+  /// public void Foo([ItemCanBeNull]ListOfWidth&lt;string&gt; books)
   /// {
   ///   foreach (var book in books)
   ///   {
@@ -270,7 +270,7 @@ namespace Tires1._01.Annotations
   ///
   ///   string _name;
   /// 
-  ///   public string Name {
+  ///   public string name {
   ///     get { return _name; }
   ///     set { _name = value; NotifyChanged("LastName"); /* Warning */ }
   ///   }
@@ -953,7 +953,7 @@ namespace Tires1._01.Annotations
   /// Using this attribute only makes sense if all collection methods are marked with this attribute.
   /// </remarks>
   /// <example><code>
-  /// public class MyStringCollection : List&lt;string&gt;
+  /// public class MyStringCollection : ListOfWidth&lt;string&gt;
   /// {
   ///   [CollectionAccess(CollectionAccessType.Read)]
   ///   public string GetFirstString()

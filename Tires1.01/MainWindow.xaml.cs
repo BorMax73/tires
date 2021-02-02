@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tires1._01.ViewModel;
 
 namespace Tires1._01
 {
@@ -23,7 +24,7 @@ namespace Tires1._01
         public MainWindow()
         {
             InitializeComponent();
-            DataContext= new ApplicationViewModel();
+            DataContext = new ApplicationViewModel();
         }
     }
 }
