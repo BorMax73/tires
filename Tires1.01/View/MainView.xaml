@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Tires1._01.View.Resources"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -28,13 +28,7 @@
                         materialDesign:HintAssist.Hint="width"
                               ItemsSource="{Binding SearchParams.ListWidth}"
                               SelectedValue="{Binding InputParams.SelectWidth}">
-                            <ComboBox.SelectedItem>
-                                <Binding
-                            Path="SelectElement"
-                            Mode="TwoWay"
-                            UpdateSourceTrigger="PropertyChanged">
-                                </Binding>
-                            </ComboBox.SelectedItem>
+                            
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel />
@@ -46,13 +40,6 @@
                     materialDesign:HintAssist.Hint="sidewall"
                     ItemsSource="{Binding SearchParams.ListSideWall}"
                     SelectedValue="{Binding InputParams.SelectSideWall}">
-                            <ComboBox.SelectedItem>
-                                <Binding
-                            Path="SelectElement"
-                            Mode="TwoWay"
-                            UpdateSourceTrigger="PropertyChanged">
-                                </Binding>
-                            </ComboBox.SelectedItem>
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel />
@@ -64,13 +51,6 @@
                     materialDesign:HintAssist.Hint="diameter"
                     ItemsSource="{Binding SearchParams.ListDiameter}"
                     SelectedValue="{Binding InputParams.SelectDiameter}">
-                            <ComboBox.SelectedItem>
-                                <Binding
-                            Path="SelectElement"
-                            Mode="TwoWay"
-                            UpdateSourceTrigger="PropertyChanged">
-                                </Binding>
-                            </ComboBox.SelectedItem>
                             <ComboBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <VirtualizingStackPanel />
@@ -86,13 +66,7 @@
                         materialDesign:HintAssist.Hint="season"
                               ItemsSource="{Binding SearchParams.ListSeason}"
                               SelectedValue="{Binding InputParams.SelectSeason}">
-                        <ComboBox.SelectedItem>
-                            <Binding
-                            Path="SelectElement"
-                            Mode="TwoWay"
-                            UpdateSourceTrigger="PropertyChanged">
-                            </Binding>
-                        </ComboBox.SelectedItem>
+                       
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel />
@@ -104,13 +78,6 @@
                     materialDesign:HintAssist.Hint="brand"
                     ItemsSource="{Binding SearchParams.ListBrand}"
                     SelectedValue="{Binding InputParams.SelectBrand}">
-                        <ComboBox.SelectedItem>
-                            <Binding
-                            Path="SelectElement"
-                            Mode="TwoWay"
-                            UpdateSourceTrigger="PropertyChanged">
-                            </Binding>
-                        </ComboBox.SelectedItem>
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel />
@@ -149,11 +116,11 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
-                            <materialDesign:Card Width="200" Height="300">
+                            <materialDesign:Card Width="220" Height="320">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
-                                        <RowDefinition/>
+                                        <RowDefinition Height="2*"/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
                                     <Image
@@ -185,6 +152,30 @@
                                             <Run Text="Цена:"></Run>
                                             <Run Text="{Binding Price}"></Run>
                                         </TextBlock>
+                                        <TextBlock
+                                            TextWrapping="Wrap"
+                                            VerticalAlignment="Center">
+                                            <Run Text="Ширина:"></Run>
+                                            <Run Text="{Binding Width}"></Run>
+                                        </TextBlock>
+                                        <TextBlock
+                                            TextWrapping="Wrap"
+                                            VerticalAlignment="Center">
+                                            <Run Text="Профиль:"></Run>
+                                            <Run Text="{Binding SideWall}"></Run>
+                                        </TextBlock>
+                                        <TextBlock
+                                            TextWrapping="Wrap"
+                                            VerticalAlignment="Center">
+                                            <Run Text="Диаметр:"></Run>
+                                            <Run Text="{Binding Diameter}"></Run>
+                                        </TextBlock>
+                                        <TextBlock
+                                            TextWrapping="Wrap"
+                                            VerticalAlignment="Center">
+                                            <Run Text="Сезон:"></Run>
+                                            <Run Text="{Binding Season}"></Run>
+                                        </TextBlock>
                                     </StackPanel>
                                     <StackPanel
                                         DataContext="MainPageViewModel"
@@ -192,8 +183,8 @@
                                         Grid.Row="2"
                                         Orientation="Horizontal"
                                         Margin="8">
-                                        <Button Content="X" Command="{Binding ElementName=lv,Path=DataContext.AddCommand}"  />
                                         <ToggleButton 
+                                            Command="{Binding ElementName=lv,Path=DataContext.AddCommand}"
                                             Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                                             ToolTip="MaterialDesignFlatPrimaryToggleButton">
                                             <materialDesign:PackIcon

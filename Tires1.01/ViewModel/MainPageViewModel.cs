@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Input;
+using System.Linq;
 
 namespace Tires1._01.ViewModel
 {
-    public class MainPageViewModel : ViewModelBase, IPageViewModel
+    public class MainPageViewModel :  ViewModelBase, IPageViewModel, IBaseCommands
     {
         #region Fields
         private SelectorViewModel _selectorViewModel = new SelectorViewModel();
@@ -18,7 +17,7 @@ namespace Tires1._01.ViewModel
 
         #endregion
 
-
+        
         #region Properties/Commands
         public string Name
         {
@@ -29,6 +28,7 @@ namespace Tires1._01.ViewModel
             get { return _selectorViewModel; }
             set
             {
+                
                 _selectorViewModel = value;
                 SetProperty(ref _selectorViewModel, value);
             }
@@ -37,7 +37,8 @@ namespace Tires1._01.ViewModel
 
         public IEnumerable<Tire> Tires
         {
-            get { return _tires; }
+            get
+            { return _tires; }
             set
             {
                 SetProperty(ref _tires, value);
@@ -47,7 +48,10 @@ namespace Tires1._01.ViewModel
 
         public Tire SelectedTire
         {
-            get { return _selectedTire; }
+            get
+            {
+                return _selectedTire;
+            }
             set
             {
                 SetProperty(ref _selectedTire, value);
@@ -61,12 +65,13 @@ namespace Tires1._01.ViewModel
                 return _addToFavoriteCommand ??
                        (_addToFavoriteCommand = new RelayCommand(obj =>
                        {
-                           using (FavoriteContext db = new FavoriteContext())
-                           {
-                               db.favoriteTires.Load();
-                               db.favoriteTires.Add(SelectedTire);
-                               db.SaveChanges();
-                           }
+                           CheckElement();
+                           //using (FavoriteContext db = new FavoriteContext())
+                           //{
+                           //    db.favoriteTires.Load();
+                           //    db.favoriteTires.Add(SelectedTire);
+                           //    db.SaveChanges();
+                           //}
                        }));
             }
         }
@@ -97,13 +102,28 @@ namespace Tires1._01.ViewModel
        
         #endregion
 
+      
         public MainPageViewModel()
         {
         }
 
 
-        
+        public void CheckElement()
+        {
+            using (FavoriteContext db = new FavoriteContext())
+            {
+                db.favoriteTires.Load();
+                if (db.favoriteTires.Any(o => o.id == SelectedTire.id))
+                {
+                    
+                }
+                else
+                {
+                    db.favoriteTires.Add(SelectedTire);
+                }
 
-        
+                db.SaveChanges();
+            }
+        }
     }
 }

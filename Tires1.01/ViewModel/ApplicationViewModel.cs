@@ -59,6 +59,10 @@ namespace Tires1._01
                 if (_currentPageViewModel != value)
                 {
                     _currentPageViewModel = value;
+                    if (_currentPageViewModel.Name == "Favorite")
+                    {
+                        ((FavoritePageViewModel)_currentPageViewModel).DBrequest();
+                    }
                     OnPropertyChanged("CurrentPageViewModel");
                 }
             }

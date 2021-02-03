@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,9 +12,12 @@ namespace Tires1._01.ViewModel
     public class ViewModelBase : INotifyPropertyChanged
     {
         
-        public event PropertyChangedEventHandler PropertyChanged;
-
         
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+
         protected virtual bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (object.Equals(storage, value)) return false;

@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Tires1._01.ViewModel
 {
-    public class FavoritePageViewModel : ViewModelBase, IPageViewModel
+    public class FavoritePageViewModel : ViewModelBase, IPageViewModel, IBaseCommands
     {
         #region Fields
 
@@ -24,10 +25,7 @@ namespace Tires1._01.ViewModel
 
         public IEnumerable<Tire> Tires
         {
-            get
-            {
-                return _tires;
-            }
+            get { return _tires; }
             set
             {
                 SetProperty(ref _tires, value);
@@ -36,7 +34,10 @@ namespace Tires1._01.ViewModel
 
         public Tire SelectedTire
         {
-            get { return _selectedTire; }
+            get
+            {
+                return _selectedTire;
+            }
             set
             {
                 SetProperty(ref _selectedTire, value);
@@ -51,6 +52,7 @@ namespace Tires1._01.ViewModel
                 return _addToFavoriteCommand ??
                        (_addToFavoriteCommand = new RelayCommand(obj =>
                        {
+                           CheckElement();
                            DBrequest();
                           
                        }));
@@ -78,13 +80,34 @@ namespace Tires1._01.ViewModel
              DBrequest();
          }
 
-        private void DBrequest()
+        public void DBrequest()
         {
             using (FavoriteContext db = new FavoriteContext())
             {
                 db.favoriteTires.Load();
                 Tires = db.favoriteTires.Local.ToBindingList();
             }
+        }
+
+        public void CheckElement()
+        {
+            using (FavoriteContext db = new FavoriteContext())
+            {
+                db.favoriteTires.Load();
+                if (db.favoriteTires.Any(o => o.id == SelectedTire.id))
+                {
+                    Tire tire = db.favoriteTires
+                        .FirstOrDefault(o => o.id == SelectedTire.id);
+                    db.favoriteTires.Remove(tire);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.favoriteTires.Add(SelectedTire);
+                }
+
+            }
+            
         }
         #endregion
     }
