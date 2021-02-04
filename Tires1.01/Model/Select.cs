@@ -75,7 +75,7 @@ namespace Tires1._01
                 {
                     selectString += "and (brand = brand)";
                 }
-                SQLiteCommand selectCommand = new SQLiteCommand($"SELECT * FROM tires WHERE {selectString}", db);
+                SQLiteCommand selectCommand = new SQLiteCommand($"SELECT * FROM tires WHERE {selectString} LIMIT 200", db);
                 db.Open();
                 SQLiteDataReader reader = selectCommand.ExecuteReader();
                 foreach (DbDataRecord record in reader)
