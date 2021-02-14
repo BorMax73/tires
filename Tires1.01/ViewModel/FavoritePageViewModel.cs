@@ -18,30 +18,18 @@ namespace Tires1._01.ViewModel
         #endregion
 
         #region Properties/Commands
-        public string Name
-        {
-            get { return "Favorite"; }
-        }
+        public string Name => "Favorite";
 
         public IEnumerable<Tire> Tires
         {
-            get { return _tires; }
-            set
-            {
-                SetProperty(ref _tires, value);
-            }
+            get => _tires;
+            set => SetProperty(ref _tires, value);
         }
 
         public Tire SelectedTire
         {
-            get
-            {
-                return _selectedTire;
-            }
-            set
-            {
-                SetProperty(ref _selectedTire, value);
-            }
+            get => _selectedTire;
+            set => SetProperty(ref _selectedTire, value);
         }
 
 
@@ -49,24 +37,22 @@ namespace Tires1._01.ViewModel
         {
             get
             {
-                return _addToFavoriteCommand ??
-                       (_addToFavoriteCommand = new RelayCommand(obj =>
-                       {
-                           CheckElement();
-                           DBrequest();
+                return _addToFavoriteCommand ??= new RelayCommand(obj =>
+                {
+                    CheckElement();
+                    DBrequest();
                           
-                       }));
+                });
             }
         }
         public RelayCommand WebSearchCommand
         {
             get
             {
-                return _webSearchCommand ??
-                       (_webSearchCommand = new RelayCommand(obj =>
-                       {
-                           Process.Start($"https://www.google.com/search?q={SelectedTire.Name}");
-                       }));
+                return _webSearchCommand ??= new RelayCommand(obj =>
+                {
+                    Process.Start($"https://www.google.com/search?q={SelectedTire.Name}");
+                });
             }
         }
 

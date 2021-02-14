@@ -82,7 +82,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DB\ApplicationContext.cs" />
     <Compile Include="DB\FavoriteContext.cs" />
     <Compile Include="Model\IBaseCommands.cs" />
     <Compile Include="View\FavoriteView.xaml.cs">

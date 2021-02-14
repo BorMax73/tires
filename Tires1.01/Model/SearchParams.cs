@@ -79,87 +79,73 @@ namespace Tires1._01
             GetBrand();
         }
 
-        private List<string> GetWidth()
+        private async void GetWidth()
         {
             using (SQLiteConnection db = new SQLiteConnection("Data Source=.\\appDB.db"))
             {
 
                 SQLiteCommand selectCommand = new SQLiteCommand("SELECT DISTINCT width FROM tires ORDER BY width", db);
                 db.Open();
-                SQLiteDataReader reader = selectCommand.ExecuteReader();
-                foreach (DbDataRecord record in reader)
+                var reader = await selectCommand.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
                 {
-                    _listOfWidth.Add(record["width"].ToString());
+                    _listOfWidth.Add(reader["width"].ToString());
                 }
             }
-
-            return _listOfWidth;
         }
-
-        private List<string> GetDiameter()
+        private async void GetDiameter()
         {
             using (SQLiteConnection db = new SQLiteConnection("Data Source=.\\appDB.db"))
             {
                 SQLiteCommand selectCommand = new SQLiteCommand("SELECT DISTINCT diameter FROM tires ORDER BY diameter", db);
                 db.Open();
-                SQLiteDataReader reader = selectCommand.ExecuteReader();
-                foreach (DbDataRecord record in reader)
+                var reader = await selectCommand.ExecuteReaderAsync();
+                while(await reader.ReadAsync())
                 {
-                    _listOfDiameter.Add(record["diameter"].ToString());
+                    _listOfDiameter.Add(reader["diameter"].ToString());
                 }
-
             }
-
-            return _listOfDiameter;
         }
-
-        private List<string> GetSideWall()
+        private async void GetSideWall()
         {
             using (SQLiteConnection db = new SQLiteConnection("Data Source=.\\appDB.db"))
             {
                 SQLiteCommand selectCommand = new SQLiteCommand("SELECT DISTINCT sidewall FROM tires ORDER BY sidewall", db);
                 db.Open();
-                SQLiteDataReader reader = selectCommand.ExecuteReader();
-                foreach (DbDataRecord record in reader)
+                var reader = await selectCommand.ExecuteReaderAsync();
+                while(await reader.ReadAsync())
                 {
-                    _listOfSideWall.Add(record["sidewall"].ToString());
+                    _listOfSideWall.Add(reader["sidewall"].ToString());
                 }
-
             }
-
-            return _listOfSideWall;
         }
-        private List<string> GetSeason()
+        private async void  GetSeason()
         {
             using (SQLiteConnection db = new SQLiteConnection("Data Source=.\\appDB.db"))
             {
                 SQLiteCommand selectCommand = new SQLiteCommand("SELECT DISTINCT season FROM tires ORDER BY season", db);
                 db.Open();
-                SQLiteDataReader reader = selectCommand.ExecuteReader();
-                foreach (DbDataRecord record in reader)
+                var reader = await selectCommand.ExecuteReaderAsync();
+                while(await reader.ReadAsync())
                 {
-                    _listOfSeason.Add(record["season"].ToString());
+                    _listOfSeason.Add(reader["season"].ToString());
                 }
-
             }
-
-            return _listOfSideWall;
         }
-        private List<string> GetBrand()
+        private async void GetBrand()
         {
             using (SQLiteConnection db = new SQLiteConnection("Data Source=.\\appDB.db"))
             {
                 SQLiteCommand selectCommand = new SQLiteCommand("SELECT DISTINCT brand FROM tires ORDER BY brand", db);
                 db.Open();
-                SQLiteDataReader reader = selectCommand.ExecuteReader();
-                foreach (DbDataRecord record in reader)
+                var reader =  await selectCommand.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
                 {
-                    _listOfBrand.Add(record["brand"].ToString());
+                    _listOfBrand.Add(reader["brand"].ToString());
                 }
 
             }
-
-            return _listOfBrand;
+    
         }
 
         #endregion

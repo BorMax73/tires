@@ -94,7 +94,50 @@
         </Grid>
             
         <Grid Grid.Column="1">
-            <ListView x:Name="lv" Margin="10" ItemsSource="{Binding Tires}" SelectedItem="{Binding SelectedTire}" >
+            <Grid.RowDefinitions> <RowDefinition Height="Auto"></RowDefinition> <RowDefinition Height="*"></RowDefinition></Grid.RowDefinitions>
+            <Menu Height="30"  >
+                <MenuItem Height="Auto" Header ="Sort by price"  VerticalAlignment="Stretch" >
+                    <Button
+                        VerticalContentAlignment="Stretch"
+                    Content="Сортировать по возростанию цены"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Command="{Binding SortByPriceLow}"
+                    ToolTip="MaterialDesignFlatButton"/>
+            
+            
+                <Button
+                    VerticalContentAlignment="Stretch"
+                    Content="Сортировать по убыванию цены"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Command="{Binding SortByPriceHigh}"
+                    ToolTip="MaterialDesignFlatButton"/>
+                </MenuItem>
+                </Menu>
+            <!--<DockPanel Width="300" Height="30" HorizontalAlignment="Left">
+                <Button
+                    Height="20"
+                    Width="140"
+                    FontSize="7"
+                    VerticalContentAlignment="Stretch"
+                    Content="Сортировать по возростанию цены"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                Command="{Binding SortByPriceLow}"
+                ToolTip="MaterialDesignFlatButton">
+                
+            </Button>
+                <Button
+                    Width="Auto"
+                    Height="20"
+                    FontSize="7"
+                    VerticalContentAlignment="Stretch"
+                    Content="Сортировать по убыванию цены"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Command="{Binding SortByPriceHigh}"
+                    ToolTip="MaterialDesignFlatButton">
+                   
+                </Button>
+            </DockPanel>-->
+            <ListView Grid.Row="1" x:Name="lv" Margin="10" ItemsSource="{Binding Tires}" SelectedItem="{Binding SelectedTire}" >
                 <ListView.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding SelectCommand}" />
                 </ListView.InputBindings>
@@ -200,6 +243,7 @@
 
                 </ListView.ItemTemplate>
             </ListView>
+               
         </Grid>
     </Grid>
 </UserControl>

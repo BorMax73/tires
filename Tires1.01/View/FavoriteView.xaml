@@ -96,6 +96,7 @@
                                         Orientation="Horizontal"
                                         Margin="8">
                                         <ToggleButton 
+                                            IsChecked="True"
                                             Command="{Binding ElementName=lv,Path=DataContext.AddCommand}"
                                             Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                                             ToolTip="MaterialDesignFlatPrimaryToggleButton">
