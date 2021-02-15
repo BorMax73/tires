@@ -2,6 +2,8 @@
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Tires1._01.ViewModel
 {
@@ -82,7 +84,7 @@ namespace Tires1._01.ViewModel
                 });
             }
         }
-        public RelayCommand SelectCommand
+        public  RelayCommand SelectCommand
         {
             get
             {
@@ -94,10 +96,10 @@ namespace Tires1._01.ViewModel
             }
         }
 
-       
+
         #endregion
 
-      
+
         public MainPageViewModel()
         {
         }

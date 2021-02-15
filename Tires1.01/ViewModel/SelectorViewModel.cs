@@ -13,29 +13,19 @@ namespace Tires1._01
 
         public Select Select
         {
-            get { return _select; }
-            set
-            {
-                SetProperty(ref _select, value);
-            }
+            get => _select;
+            set => SetProperty(ref _select, value);
         }
         public InputParams InputParams
         {
-            get { return _inputParams; }
-            set
-            {
-                SetProperty(ref _inputParams, value);
-            }
+            get => _inputParams;
+            set => SetProperty(ref _inputParams, value);
         }
 
         public SearchParams SearchParams
         {
-            get{return _searchParams;}
-            set
-            {
-                SetProperty(ref _searchParams, value);
-            }
-
+            get => _searchParams;
+            set => SetProperty(ref _searchParams, value);
         }
         public SelectorViewModel()
         {

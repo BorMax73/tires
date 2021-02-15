@@ -96,47 +96,34 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions> <RowDefinition Height="Auto"></RowDefinition> <RowDefinition Height="*"></RowDefinition></Grid.RowDefinitions>
             <Menu Height="30"  >
-                <MenuItem Height="Auto" Header ="Sort by price"  VerticalAlignment="Stretch" >
-                    <Button
-                        VerticalContentAlignment="Stretch"
-                    Content="Сортировать по возростанию цены"
-                    Style="{StaticResource MaterialDesignFlatButton}"
-                    Command="{Binding SortByPriceLow}"
-                    ToolTip="MaterialDesignFlatButton"/>
-            
-            
-                <Button
-                    VerticalContentAlignment="Stretch"
-                    Content="Сортировать по убыванию цены"
-                    Style="{StaticResource MaterialDesignFlatButton}"
-                    Command="{Binding SortByPriceHigh}"
-                    ToolTip="MaterialDesignFlatButton"/>
+                <MenuItem Height="Auto" >
+                    <MenuItem.Header >
+                        <TextBlock Text="Сортировать">
+                             <materialDesign:PackIcon
+                                 Margin="0,0,0,-3"
+                                 Kind="Cash"/>
+                        </TextBlock>
+                    </MenuItem.Header>
+                    
+                    <TextBlock Text="По возрастанию цены">
+                        <materialDesign:PackIcon
+                            Margin="0,0,0,-3"
+                            Kind="ArrowUpBold"/>
+                        <TextBlock.InputBindings>
+                            <MouseBinding Command="{Binding SortByPriceLow}" MouseAction="LeftClick" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
+                    <TextBlock Text="По убыванию цены">
+                        <materialDesign:PackIcon
+                            Margin="0,0,0,-3"
+                            Kind="ArrowDownBold"/>
+                        <TextBlock.InputBindings>
+                            <MouseBinding Command="{Binding SortByPriceHigh}" MouseAction="LeftClick" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
                 </MenuItem>
-                </Menu>
-            <!--<DockPanel Width="300" Height="30" HorizontalAlignment="Left">
-                <Button
-                    Height="20"
-                    Width="140"
-                    FontSize="7"
-                    VerticalContentAlignment="Stretch"
-                    Content="Сортировать по возростанию цены"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                Command="{Binding SortByPriceLow}"
-                ToolTip="MaterialDesignFlatButton">
                 
-            </Button>
-                <Button
-                    Width="Auto"
-                    Height="20"
-                    FontSize="7"
-                    VerticalContentAlignment="Stretch"
-                    Content="Сортировать по убыванию цены"
-                    Style="{StaticResource MaterialDesignFlatButton}"
-                    Command="{Binding SortByPriceHigh}"
-                    ToolTip="MaterialDesignFlatButton">
-                   
-                </Button>
-            </DockPanel>-->
+                </Menu>
             <ListView Grid.Row="1" x:Name="lv" Margin="10" ItemsSource="{Binding Tires}" SelectedItem="{Binding SelectedTire}" >
                 <ListView.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding SelectCommand}" />

@@ -153,7 +153,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\Resources\sort.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Cont.jpg" />
   </ItemGroup>

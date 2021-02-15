@@ -10,6 +10,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="940"
         FontSize="18"
+        FontFamily="Arial"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         >
@@ -31,19 +32,21 @@
         </Grid.ColumnDefinitions>
        
             
-        <Grid Width="100" HorizontalAlignment="Left">
-            <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0">
+        <Grid Width="100" HorizontalAlignment="Left" Margin="0, 5,5,0">
+           
                 <ItemsControl ItemsSource="{Binding PageViewModels}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Button Content="{Binding Name}"
+                            <Button
+                                FontSize="18"
+                                    Content="{Binding Name}"
                                     Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                                     CommandParameter="{Binding }"
-                                    Margin="2,5"/>
+                                Margin="2,5"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </Border>
+            
         </Grid>
         <Grid Grid.Column="1">
             <ContentControl Content="{Binding CurrentPageViewModel}" />
